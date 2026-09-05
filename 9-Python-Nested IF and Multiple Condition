@@ -1,0 +1,74 @@
+# 9- Python-Nested IF and Multiple Conditions
+#print("Check your Elligiblity")
+
+#age= int(input("Enter your Age:"))
+
+#if age >= 18:
+    #id_no=int(input("Enter your id no:"))
+    #if id_no == 1722:
+        #print("You can enter")
+    #else:
+        #print("Wrong ID Number")
+#else:
+   # print("You are underage")
+
+# Multiple Conditions (OR)
+#age=int(input("Enter your age:"))
+#residence = input("Do u have license?:")
+
+#if age>=18 or residence=="yes":
+    #print("Eligible to register")
+#else:
+    #print("Not Eligible to register")
+
+
+# Online Exam login
+#Registration_no= int(input("Enter the registration no:"))
+
+#if Registration_no == 1221:
+          #Exam_subject = (input("Enter exam Subject:"))
+        
+          #if Exam_subject.lower() == "python":
+            #Password = int(input("Enter Password"))
+
+            #if Password == 8888:
+                #print("Login Successful")
+            #else:
+                #print("Wrong Password")
+          #else:
+              #print("Subject not available")
+#else:
+    #print("Registration Failed")   
+    
+   
+# Multi Level Verification system
+security_code = int(input("Enter the security code: "))
+
+if security_code == 5566:
+    department = input("Enter your department: ")
+
+    if department.lower() == "finance":
+        access_level = int(input("Enter your access level: "))
+
+        if access_level >= 5:
+            print("Access Granted: Welcome to the meeting room.")
+        else:
+            print("Insufficient access level.")
+    else:
+        print("Access denied: Department not allowed.")
+else:
+    print("Invalid security code.")
+
+      
+
+      
+
+
+
+
+
+
+
+
+
+

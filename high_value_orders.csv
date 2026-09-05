@@ -1,0 +1,9 @@
+Order_ID,Order_Date,Customer_Name,City,State,Product_Category,Product_Name,Quantity,Unit_Price,Discount,Payment_Mode,Sales_Channel,Total_Sales,Order_Category
+ORD1002,02-01-2024,Smita Patel,Patna,Maharashtra,Electronics,Laptop,1,55000.0,2000.0,Credit Card,Offline,53000.0,High
+ORD1004,04-01-2024,Karan Yadav,Chennai,Tamil Nadu,Electronics,Laptop,1,58000.0,1500.0,Debit Card,Offline,56500.0,High
+ORD1008,08-01-2024,Manoj Yadav,Chennai,Tamil Nadu,Electronics,Laptop,1,60000.0,2500.0,Debit Card,Online,57500.0,High
+ORD1011,11-01-2024,Sneha Patil,Pune,Maharashtra,Electronics,Mobile Phone,1,55000.0,2000.0,Credit Card,Offline,53000.0,High
+ORD1013,13-01-2024,Karan Gupta,Chennai,Tamil Nadu,Electronics,Tablet,1,58000.0,1500.0,Debit Card,Offline,56500.0,High
+ORD1017,17-01-2024,Manoj Yadav,Chennai,Tamil Nadu,Electronics,Tablet,1,60000.0,2500.0,Debit Card,Online,57500.0,High
+ORD1021,21-01-2024,Karan Gupta,Chennai,Tamil Nadu,Electronics,Mobile Phone,1,58000.0,1500.0,Debit Card,Offline,56500.0,High
+ORD1025,25-01-2024,Manoj Yadav,Surat,Tamil Nadu,Electronics,Earphones,1,60000.0,2500.0,Debit Card,Online,57500.0,High

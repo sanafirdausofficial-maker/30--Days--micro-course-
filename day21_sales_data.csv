@@ -1,0 +1,9 @@
+Order_ID,Order_Date,Customer_Name,City,Product,Quantity,Price,Payment_Type
+ORD101,2024-01-10,Rohit Sharma,Mumbai,Laptop,1,55000,UPI
+ORD102,2024-01-10,Sneha Patil,Pune,Mobile,2,18000,Credit Card
+ORD103,2024-01-11,Amit Verma,Delhi,Tablet,1,22000,Cash
+ORD104,2024-01-11,Karan Gupta,Chennai,Laptop,1,56000,UPI
+ORD105,2024-01-12,Priya Singh,Pune,Earphones,3,1500,UPI
+ORD106,2024-01-12,Rahul Jain,Mumbai,Mobile,1,19000,Debit Card
+ORD107,2024-01-13,Anita Desai,Delhi,Tablet,2,23000,UPI
+ORD108,2024-01-13,Manoj Yadav,Chennai,Laptop,1,57000,Credit Card

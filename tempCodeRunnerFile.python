@@ -1,0 +1,324 @@
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
+import random
+import math
+
+# -----------------------------
+# CANVAS
+# -----------------------------
+W, H = 800, 1200
+img = Image.new("RGB", (W, H), "black")
+
+# Neon glow layer
+glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+g = ImageDraw.Draw(glow)
+
+# -----------------------------
+# STARS / SPARKLES
+# -----------------------------
+for _ in range(250):
+    x = random.randint(80, 720)
+    y = random.randint(400, 1050)
+    r = random.choice([1, 1, 2, 3])
+    color = random.choice([
+        (0, 255, 255, 220),
+        (255, 0, 255, 220),
+        (80, 120, 255, 220),
+        (255, 255, 100, 220)
+    ])
+    g.ellipse((x-r, y-r, x+r, y+r), fill=color)
+
+# -----------------------------
+# NEON CIRCLE BEHIND KRISHNA
+# -----------------------------
+g.ellipse(
+    (180, 390, 620, 920),
+    fill=(0, 100, 255, 80)
+)
+
+glow = glow.filter(ImageFilter.GaussianBlur(30))
+img = Image.alpha_composite(img.convert("RGBA"), glow)
+
+draw = ImageDraw.Draw(img)
+
+# -----------------------------
+# FONT
+# -----------------------------
+try:
+    title_font = ImageFont.truetype(
+        "C:/Windows/Fonts/georgiab.ttf", 58
+    )
+    small_font = ImageFont.truetype(
+        "C:/Windows/Fonts/arial.ttf", 28
+    )
+except:
+    title_font = ImageFont.load_default()
+    small_font = ImageFont.load_default()
+
+# -----------------------------
+# TITLE
+# -----------------------------
+title = "POV: How developers"
+title2 = "celebrate Krishnashtami"
+
+def centered_text(text, y, font, fill):
+    box = draw.textbbox((0, 0), text, font=font)
+    x = (W - (box[2] - box[0])) // 2
+    draw.text((x, y), text, font=font, fill=fill)
+
+# Yellow neon title
+for offset in range(10, 0, -2):
+    centered_text(title, 55 + offset, title_font,
+                  (255, 180, 0, 25))
+
+for offset in range(10, 0, -2):
+    centered_text(title2, 125 + offset, title_font,
+                  (255, 180, 0, 25))
+
+centered_text(title, 55, title_font, (255, 235, 0))
+centered_text(title2, 125, title_font, (255, 235, 0))
+
+centered_text("🦚   🪈", 205, small_font, (255, 255, 255))
+
+# -----------------------------
+# KRISHNA NEON GLOW
+# -----------------------------
+neon = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+n = ImageDraw.Draw(neon)
+
+# Face
+face_box = (270, 400, 530, 690)
+
+# Glow around face
+for width in range(35, 5, -5):
+    n.ellipse(
+        (270-width, 400-width,
+         530+width, 690+width),
+        outline=(0, 220, 255, 25),
+        width=8
+    )
+
+# Face
+n.ellipse(
+    face_box,
+    fill=(15, 110, 210, 255),
+    outline=(0, 255, 255, 255),
+    width=8
+)
+
+# -----------------------------
+# HAIR
+# -----------------------------
+n.pieslice(
+    (250, 350, 550, 550),
+    180, 360,
+    fill=(35, 5, 90, 255),
+    outline=(255, 0, 255, 255),
+    width=7
+)
+
+# Hair strands
+for i in range(18):
+    x = 270 + i * 15
+    n.arc(
+        (x, 340, x+100, 480),
+        180, 330,
+        fill=(180, 0, 255, 220),
+        width=4
+    )
+
+# -----------------------------
+# EYES
+# -----------------------------
+for cx in [335, 465]:
+    # white eye
+    n.ellipse(
+        (cx-35, 500, cx+35, 580),
+        fill=(245, 250, 255, 255),
+        outline=(0, 255, 255, 255),
+        width=5
+    )
+
+    # pupil
+    n.ellipse(
+        (cx-17, 525, cx+17, 560),
+        fill=(20, 0, 120, 255),
+        outline=(255, 0, 255, 255),
+        width=4
+    )
+
+    # sparkle
+    n.ellipse(
+        (cx-8, 530, cx, 538),
+        fill="white"
+    )
+
+# -----------------------------
+# NOSE
+# -----------------------------
+n.arc(
+    (375, 540, 430, 635),
+    270, 90,
+    fill=(255, 80, 255, 255),
+    width=5
+)
+
+# -----------------------------
+# SMILE
+# -----------------------------
+n.arc(
+    (350, 600, 450, 660),
+    10, 170,
+    fill=(255, 70, 220, 255),
+    width=6
+)
+
+# -----------------------------
+# PEACOCK FEATHER
+# -----------------------------
+# Feather stem
+n.line(
+    (505, 430, 600, 290),
+    fill=(0, 255, 180, 255),
+    width=8
+)
+
+# Feather outer
+n.ellipse(
+    (535, 230, 625, 380),
+    fill=(0, 100, 80, 255),
+    outline=(0, 255, 220, 255),
+    width=6
+)
+
+# Feather blue area
+n.ellipse(
+    (550, 245, 610, 350),
+    fill=(0, 80, 255, 255),
+    outline=(0, 255, 255, 255),
+    width=5
+)
+
+# Feather purple center
+n.ellipse(
+    (565, 265, 595, 325),
+    fill=(150, 0, 255, 255)
+)
+
+# Feather green center
+n.ellipse(
+    (572, 275, 588, 315),
+    fill=(0, 255, 100, 255)
+)
+
+# -----------------------------
+# BODY
+# -----------------------------
+n.ellipse(
+    (285, 650, 515, 950),
+    fill=(20, 80, 180, 255),
+    outline=(0, 255, 255, 255),
+    width=7
+)
+
+# Yellow clothes
+n.pieslice(
+    (270, 730, 530, 1000),
+    0, 180,
+    fill=(255, 180, 0, 255),
+    outline=(255, 240, 0, 255),
+    width=6
+)
+
+# Pink/blue decorations
+for i in range(15):
+    x = random.randint(285, 515)
+    y = random.randint(730, 920)
+
+    n.ellipse(
+        (x, y, x+8, y+8),
+        fill=random.choice([
+            (255, 0, 255, 255),
+            (0, 255, 255, 255),
+            (255, 255, 0, 255)
+        ])
+    )
+
+# -----------------------------
+# FLUTE
+# -----------------------------
+n.line(
+    (230, 870, 560, 770),
+    fill=(255, 210, 0, 255),
+    width=13
+)
+
+# Flute holes
+for i in range(7):
+    x = 280 + i * 38
+    y = 855 - i * 12
+
+    n.ellipse(
+        (x, y, x+10, y+10),
+        fill=(20, 20, 20, 255)
+    )
+
+# -----------------------------
+# HANDS
+# -----------------------------
+n.ellipse(
+    (235, 820, 310, 890),
+    fill=(15, 130, 220, 255),
+    outline=(0, 255, 255, 255),
+    width=5
+)
+
+n.ellipse(
+    (490, 785, 565, 855),
+    fill=(15, 130, 220, 255),
+    outline=(0, 255, 255, 255),
+    width=5
+)
+
+# -----------------------------
+# APPLY NEON GLOW
+# -----------------------------
+blur1 = neon.filter(ImageFilter.GaussianBlur(25))
+blur2 = neon.filter(ImageFilter.GaussianBlur(8))
+
+img = Image.alpha_composite(img, blur1)
+img = Image.alpha_composite(img, blur2)
+img = Image.alpha_composite(img, neon)
+
+draw = ImageDraw.Draw(img)
+
+# -----------------------------
+# BOTTOM TEXT
+# -----------------------------
+text = "✨ Coding with Krishna's blessings ✨"
+
+box = draw.textbbox((0, 0), text, font=small_font)
+x = (W - (box[2] - box[0])) // 2
+
+# Glow
+for size in range(10, 0, -2):
+    draw.text(
+        (x, 1060),
+        text,
+        font=small_font,
+        fill=(0, 255, 255, 30)
+    )
+
+draw.text(
+    (x, 1060),
+    text,
+    font=small_font,
+    fill=(255, 255, 255, 255)
+)
+
+# -----------------------------
+# SAVE
+# -----------------------------
+img.convert("RGB").save("krishnashtami.png")
+
+print("✅ Done!")
+print("Your image has been saved as: krishnashtami.png")
